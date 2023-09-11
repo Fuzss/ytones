@@ -2,9 +2,6 @@ package fuzs.ytones.network.client;
 
 import fuzs.puzzleslib.api.network.v3.ServerMessageListener;
 import fuzs.puzzleslib.api.network.v3.ServerboundMessage;
-import fuzs.ytones.Ytones;
-import fuzs.ytones.mixin.accessor.LivingEntityAccessor;
-import fuzs.ytones.network.ClientboundPopHeldItemMessage;
 import fuzs.ytones.world.level.block.ToneProvider;
 import net.minecraft.network.protocol.game.ServerboundSetCarriedItemPacket;
 import net.minecraft.server.MinecraftServer;
@@ -24,8 +21,6 @@ public record ServerboundCycleToneMessage(int carriedIndex, InteractionHand inte
                 handler.handleSetCarriedItem(new ServerboundSetCarriedItemPacket(message.carriedIndex));
                 ItemStack itemInHand = player.getItemInHand(message.interactionHand);
                 player.setItemInHand(message.interactionHand, ToneProvider.cycle(itemInHand, message.value));
-                ((LivingEntityAccessor) player).ytones$callDetectEquipmentUpdates();
-                Ytones.NETWORK.sendTo(player, new ClientboundPopHeldItemMessage(message.interactionHand));
             }
         };
     }

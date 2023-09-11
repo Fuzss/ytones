@@ -1,7 +1,6 @@
 package fuzs.ytones.world.level.block;
 
-import com.google.common.collect.Maps;
-import fuzs.ytones.world.phys.shapes.VoxelUtils;
+import fuzs.ytones.world.phys.shapes.ShapesHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -25,21 +24,17 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
 public class FlatLampBlock extends Block implements SimpleWaterloggedBlock {
+    private static final Map<Direction, VoxelShape> SHAPES = ShapesHelper.rotate(Block.box(0.0, 0.0, 0.0, 16.0, 3.0, 16.0));
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
-    private static final VoxelShape BASE_SHAPE = Shapes.box(0.0, 0.0, 0.0, 16.0, 3.0, 16.0);
-    private static final Map<Direction, VoxelShape> SHAPES = Stream.of(Direction.values()).collect(Maps.<Direction, Direction, VoxelShape>toImmutableEnumMap(Function.identity(), t -> VoxelUtils.rotate(t, BASE_SHAPE)));
 
     public FlatLampBlock(Properties properties) {
         super(properties);

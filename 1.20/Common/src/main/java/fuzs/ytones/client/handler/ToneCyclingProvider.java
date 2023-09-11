@@ -11,7 +11,9 @@ import net.minecraft.world.item.ItemStack;
 public record ToneCyclingProvider(ItemStack itemInHand, InteractionHand interactionHand, ItemStack forwardStack, ItemStack backwardStack) implements ItemCyclingProvider {
 
     public ToneCyclingProvider(ItemStack itemInHand, InteractionHand interactionHand) {
-        this(itemInHand, interactionHand, ToneProvider.cycle(itemInHand, 1), ToneProvider.cycle(itemInHand, -1));
+        this(itemInHand.copyWithCount(1), interactionHand, ToneProvider.cycle(itemInHand, 1), ToneProvider.cycle(itemInHand, -1));
+        this.forwardStack.setCount(1);
+        this.backwardStack.setCount(1);
     }
 
     @Override
@@ -51,9 +53,6 @@ public record ToneCyclingProvider(ItemStack itemInHand, InteractionHand interact
 
     private boolean cycleSlot(int value) {
         Minecraft minecraft = Minecraft.getInstance();
-        ItemStack itemStack = ToneProvider.cycle(minecraft.player.getItemInHand(this.interactionHand), value);
-//        itemStack.setPopTime(5);
-        minecraft.player.setItemInHand(this.interactionHand, itemStack);
         int selected = minecraft.player.getInventory().selected;
         Ytones.NETWORK.sendToServer(new ServerboundCycleToneMessage(selected, this.interactionHand, value));
         return true;

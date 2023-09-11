@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "ytones:stone_tile"
+    },
+    "@": [
+      {
+        "tag": "c:yellow_dyes"
+      },
+      {
+        "tag": "forge:dyes/yellow"
+      }
+    ]
+  },
+  "pattern": [
+    "###",
+    "#@#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "item": "ytones:sols_one"
+  },
+  "show_notification": true
+}

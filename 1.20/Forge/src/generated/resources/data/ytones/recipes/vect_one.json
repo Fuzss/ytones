@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "ytones:stone_tile"
+    },
+    "@": [
+      {
+        "tag": "c:black_dyes"
+      },
+      {
+        "tag": "forge:dyes/black"
+      }
+    ]
+  },
+  "pattern": [
+    "###",
+    "#@#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "item": "ytones:vect_one"
+  },
+  "show_notification": true
+}

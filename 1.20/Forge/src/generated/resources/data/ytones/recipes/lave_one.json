@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "ytones:stone_tile"
+    },
+    "@": [
+      {
+        "tag": "c:light_blue_dyes"
+      },
+      {
+        "tag": "forge:dyes/light_blue"
+      }
+    ]
+  },
+  "pattern": [
+    "###",
+    "#@#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "item": "ytones:lave_one"
+  },
+  "show_notification": true
+}

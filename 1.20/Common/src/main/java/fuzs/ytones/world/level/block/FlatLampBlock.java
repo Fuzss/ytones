@@ -3,6 +3,8 @@ package fuzs.ytones.world.level.block;
 import fuzs.ytones.world.phys.shapes.ShapesHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -29,6 +31,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 
+@SuppressWarnings("deprecation")
 public class FlatLampBlock extends Block implements SimpleWaterloggedBlock {
     private static final Map<Direction, VoxelShape> SHAPES = ShapesHelper.rotate(Block.box(0.0, 0.0, 0.0, 16.0, 3.0, 16.0));
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -77,6 +80,8 @@ public class FlatLampBlock extends Block implements SimpleWaterloggedBlock {
         boolean bl = state.getValue(LIT);
         state = state.setValue(LIT, !bl);
         level.setBlock(pos, state, 10);
+        float f = !bl ? 0.8F : 0.6F;
+        level.playSound(null, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, f);
         level.gameEvent(player, bl ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);
         return InteractionResult.sidedSuccess(level.isClientSide);
     }

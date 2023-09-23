@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-11T14:49:55.628649	Block States: ytones
+// 1.20.1	2023-09-23T12:23:31.653736	Block States: ytones
 90df45a151cfcff352c71c21f6ab93528a48a3fb assets/ytones/blockstates/agon_eight.json
 5fd10d21537d13d2399707675a0bdf0bce366d1d assets/ytones/blockstates/agon_eleven.json
 b04d540ad2fbec73673ec1eb0d63924e26278a8d assets/ytones/blockstates/agon_fifteen.json
@@ -288,7 +288,6 @@ ab583047f83f69bace44ad4f08108f674fcaea92 assets/ytones/blockstates/sols_ten.json
 641935874af4df0f3b57ff6c57c575eb9b57459a assets/ytones/blockstates/sols_three.json
 53efc9eaab70c0e9e0ab8b04cd231ff39fee6ccf assets/ytones/blockstates/sols_twelve.json
 54724d108dc92339e44eef5755aef8a8c37b8c1c assets/ytones/blockstates/sols_two.json
-3a0a054d673eb6248bae01da6afe7ae8448a9589 assets/ytones/blockstates/stone_tile.json
 7e678e57d26b65ae483a7390bdb259fba3085738 assets/ytones/blockstates/sync_eight.json
 5cf24518199ded96177af82b0dd3547fc711fc74 assets/ytones/blockstates/sync_eleven.json
 68527c70cad8bdb4c9e25841336b2b93d2f6a220 assets/ytones/blockstates/sync_fifteen.json
@@ -353,6 +352,7 @@ d35eac16ea62cc9a8c7d4b8b2b8640fffc03a21f assets/ytones/blockstates/vena_ten.json
 d8c34138c51566b27dc0029f3d1453c73a2e4c42 assets/ytones/blockstates/vena_three.json
 948b78dc5df553e6337ad3521e6674150ce968a9 assets/ytones/blockstates/vena_twelve.json
 bc75f76e0bf68e6bc00df22fb60f27fb35a61804 assets/ytones/blockstates/vena_two.json
+e05e25cc818627d8d5dbcb363c193fa39907ee46 assets/ytones/blockstates/ytone.json
 70997ee2ec09291400d5423b9a6ebebb01fb5fc3 assets/ytones/blockstates/zane_eight.json
 cb95894f6d6242662e724ec57f15da0096294cda assets/ytones/blockstates/zane_eleven.json
 93efcaa3eb5e5dd779b06a3e4b5616441b6454cd assets/ytones/blockstates/zane_fifteen.json
@@ -833,7 +833,6 @@ cd63496281433728f80cee7ada0404af89d6265f assets/ytones/models/block/sols_ten.jso
 5eff3f8afe20ed60a36690332f5a751e8a0da027 assets/ytones/models/block/sols_three.json
 e7eea17ad5896d98bd8193ff82edcf0bc291b808 assets/ytones/models/block/sols_twelve.json
 186792d4ca76d7428631c619652f88e35f8c4bbc assets/ytones/models/block/sols_two.json
-d5de21ee30188facf080646ceffb542ca7473417 assets/ytones/models/block/stone_tile.json
 e2ccaf7d4c64481f64a717c4dcb6aa11cd064844 assets/ytones/models/block/sync_eight.json
 ae302ff535d6633caa9280cbce14b69b714d699e assets/ytones/models/block/sync_eleven.json
 1c6f78da9c68003f761d4bc21f3887780cd3a49c assets/ytones/models/block/sync_fifteen.json
@@ -898,6 +897,7 @@ e7fddd3e2177288641bf1ccfbdf14523905c742c assets/ytones/models/block/vena_six.jso
 c9383e85039d1cb29ff9584d6f46276b9291bd9f assets/ytones/models/block/vena_three.json
 17f97273c41262e0efa6e7ed7561f4d50756564c assets/ytones/models/block/vena_twelve.json
 edbfcac57b96f9c87486fca411d00cc5dc73be16 assets/ytones/models/block/vena_two.json
+e1bdacee141015c816bf7e848542a6baff9b9900 assets/ytones/models/block/ytone.json
 7625c72ac9635ec612ee269b4ab7bc6b6efe06ff assets/ytones/models/block/zane_eight.json
 97f4738ff990943db971782c8df845f2ea7766b1 assets/ytones/models/block/zane_eleven.json
 2c59452d9cdbf5a54de91ae8379a685370ff9736 assets/ytones/models/block/zane_fifteen.json
@@ -1379,7 +1379,6 @@ e85bca1418e8e87bfe6f679e27e3f668672b7962 assets/ytones/models/item/sols_sixteen.
 8d0b52d72f70c832c20f950ed1ca6f424752a955 assets/ytones/models/item/sols_three.json
 a87e999d5e43d268e4a7370eb314ec871cc94400 assets/ytones/models/item/sols_twelve.json
 fea4beed1eb91a2f3e31bd5bca2718b8afde80ee assets/ytones/models/item/sols_two.json
-8cdf3c53b99b5affd320564b9c4232b9fdd35d26 assets/ytones/models/item/stone_tile.json
 c1910b6748ae6ffa6f8a6ddb25cd444b89967891 assets/ytones/models/item/sync_eight.json
 7c4dc77ca5340ffe5eb41c3c2b16543fce355a73 assets/ytones/models/item/sync_eleven.json
 64b9aba1b7c05a450430971ec7f2e6e640f58d4a assets/ytones/models/item/sync_fifteen.json
@@ -1444,6 +1443,7 @@ c3fcc667128a9352459e6de5e00f774e762c1f7e assets/ytones/models/item/vena_one.json
 0357f55576da7195506ad9c7b52548c57199467f assets/ytones/models/item/vena_three.json
 e2eb01214e7c7c3ea2da3b95b4c6b1a20d261456 assets/ytones/models/item/vena_twelve.json
 c6a23e759f7f52569f12fae7386dc9f73be83f97 assets/ytones/models/item/vena_two.json
+c28db2fe50715205719904deffa8fd156158aaf9 assets/ytones/models/item/ytone.json
 3b0905c2e5e3c26fefc3c97699e1e0f0d383e195 assets/ytones/models/item/zane_eight.json
 3fbc33a02c118dad93157a7503a4a8ad0937eefc assets/ytones/models/item/zane_eleven.json
 3f9a9ce36c6d24f650f83056cfc3118f30b9206f assets/ytones/models/item/zane_fifteen.json

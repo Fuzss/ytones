@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-11T14:04:37.699956	Block Loot Tables
+// 1.20.1	2023-09-23T12:23:31.644226	Block Loot Tables
 e5fb3b387245ee6888b216b514b21f2f93dbaaed data/ytones/loot_tables/blocks/agon_eight.json
 1723d17e0d9ae3dbebab3075791baa6ad897daff data/ytones/loot_tables/blocks/agon_eleven.json
 b0eba22432094a7569ee0121b57e690b8664281e data/ytones/loot_tables/blocks/agon_fifteen.json
@@ -288,7 +288,6 @@ fc53045a6ccc250d892ec99224a310637a184acc data/ytones/loot_tables/blocks/sols_thi
 ebf048e2f0fb162609085bb38d3af3bf15f60f7d data/ytones/loot_tables/blocks/sols_three.json
 1bcf2da3ff9dd549b4a7a0ba38d02b21e88cf922 data/ytones/loot_tables/blocks/sols_twelve.json
 f28816efca4c5405bae4538d8a796b13be48c7e3 data/ytones/loot_tables/blocks/sols_two.json
-c4984e84996a0309a4faa61f6fe114f5a05fc03a data/ytones/loot_tables/blocks/stone_tile.json
 c6861d0a8c0dcf103a13c5ca69321d419e66a83f data/ytones/loot_tables/blocks/sync_eight.json
 80a66aa3f47376ac864dc16f6bff288c8774f224 data/ytones/loot_tables/blocks/sync_eleven.json
 2c59d44fc11162992c09f6fd879588ef0a50f011 data/ytones/loot_tables/blocks/sync_fifteen.json
@@ -353,6 +352,7 @@ aa32a1596b10e4015db705d10cbd61210265ea64 data/ytones/loot_tables/blocks/vena_six
 5297dc5de34811d0e4397c522516351f87104d90 data/ytones/loot_tables/blocks/vena_three.json
 72f65f3dedb83807d5d219de2d298d3f08e13cea data/ytones/loot_tables/blocks/vena_twelve.json
 54d166370ebe2dd00ee3446d67338dd5facb1596 data/ytones/loot_tables/blocks/vena_two.json
+55d729566306efd188a28bea6a7fc556b5d92122 data/ytones/loot_tables/blocks/ytone.json
 073ce31106befd8d944586a20d31fa26ba67d308 data/ytones/loot_tables/blocks/zane_eight.json
 5cd69854d9d8d010dbe003d3c413b7d62b14dc08 data/ytones/loot_tables/blocks/zane_eleven.json
 3b490c78ded88c494147d4f767d52f0c71b67db9 data/ytones/loot_tables/blocks/zane_fifteen.json

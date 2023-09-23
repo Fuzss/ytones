@@ -22,7 +22,7 @@ public class ModModelProvider extends AbstractModelProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        this.simpleBlockWithItem(ModRegistry.STONE_TILE_BLOCK.value(), this.cubeAll(ModRegistry.STONE_TILE_BLOCK.value()));
+        this.simpleBlockWithItem(ModRegistry.YTONE_BLOCK.value(), this.cubeAll(ModRegistry.YTONE_BLOCK.value()));
         Tone.forEach((tone, toneType) -> {
             Block block = tone.block(toneType);
             ResourceLocation texture = this.blockTexture(block);

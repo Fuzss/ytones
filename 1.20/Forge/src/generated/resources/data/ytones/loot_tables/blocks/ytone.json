@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "ytones:stone_tile"
+          "name": "ytones:ytone"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "ytones:blocks/stone_tile"
+  "random_sequence": "ytones:blocks/ytone"
 }

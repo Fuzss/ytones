@@ -13,7 +13,7 @@ public class ModBlockLootProvider extends AbstractLootProvider.Blocks {
 
     @Override
     public void generate() {
-        this.dropSelf(ModRegistry.STONE_TILE_BLOCK.value());
+        this.dropSelf(ModRegistry.YTONE_BLOCK.value());
         this.dropSelf(ModRegistry.FLAT_LAMP_BLOCK.value());
         Tone.forEach((tone, toneType) -> {
             this.dropSelf(tone.block(toneType));

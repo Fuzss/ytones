@@ -33,7 +33,7 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
                 .pattern("###")
                 .unlockedBy(getHasName(Blocks.GLOWSTONE, Items.GLOW_INK_SAC), has(Blocks.GLOWSTONE, Items.GLOW_INK_SAC))
                 .save(exporter);
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModRegistry.STONE_TILE_BLOCK.value(), 8)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModRegistry.YTONE_BLOCK.value(), 8)
                 .define('#', Blocks.STONE)
                 .define('@', Blocks.SMOOTH_STONE_SLAB)
                 .pattern("###")
@@ -44,12 +44,12 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
         ToneType type = ToneType.values()[0];
         for (Tone tone : Tone.values()) {
             ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, tone.block(type), 8)
-                    .define('#', ModRegistry.STONE_TILE_BLOCK.value())
+                    .define('#', ModRegistry.YTONE_BLOCK.value())
                     .define('@', tone.ingredient)
                     .pattern("###")
                     .pattern("#@#")
                     .pattern("###")
-                    .unlockedBy(getHasName(ModRegistry.STONE_TILE_BLOCK.value()), has(ModRegistry.STONE_TILE_BLOCK.value()))
+                    .unlockedBy(getHasName(ModRegistry.YTONE_BLOCK.value()), has(ModRegistry.YTONE_BLOCK.value()))
                     .save(exporter);
         }
         Tone.forEach((tone, toneType) -> {

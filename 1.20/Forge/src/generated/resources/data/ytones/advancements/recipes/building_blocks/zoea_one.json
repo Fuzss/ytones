@@ -1,28 +1,28 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_stone_tile": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "ytones:stone_tile"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "ytones:zoea_one"
       },
       "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_ytone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "ytones:ytone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
-      "has_stone_tile",
+      "has_ytone",
       "has_the_recipe"
     ]
   ],

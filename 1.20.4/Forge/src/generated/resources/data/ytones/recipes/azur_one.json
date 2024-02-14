@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "ytones:ytone"
+    },
+    "@": [
+      {
+        "tag": "c:blue_dyes"
+      },
+      {
+        "tag": "forge:dyes/blue"
+      }
+    ]
+  },
+  "pattern": [
+    "###",
+    "#@#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "item": "ytones:azur_one"
+  },
+  "show_notification": true
+}

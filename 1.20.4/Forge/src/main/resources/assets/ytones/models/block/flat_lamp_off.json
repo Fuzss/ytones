@@ -1,0 +1,6 @@
+{
+  "parent": "ytones:block/flat_lamp",
+  "textures": {
+    "top": "ytones:block/flat_lamp_off"
+  }
+}

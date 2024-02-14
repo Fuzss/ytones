@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "ytones:ytone"
+    },
+    "@": [
+      {
+        "tag": "c:red_dyes"
+      },
+      {
+        "tag": "forge:dyes/red"
+      }
+    ]
+  },
+  "pattern": [
+    "###",
+    "#@#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "item": "ytones:reds_one"
+  }
+}

@@ -1,6 +1,7 @@
 package fuzs.ytones.world.level.block;
 
-import fuzs.ytones.world.phys.shapes.ShapesHelper;
+import com.mojang.serialization.MapCodec;
+import fuzs.puzzleslib.api.shape.v1.ShapesHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -31,8 +32,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 
-@SuppressWarnings("deprecation")
 public class FlatLampBlock extends Block implements SimpleWaterloggedBlock {
+    public static final MapCodec<FlatLampBlock> CODEC = simpleCodec(FlatLampBlock::new);
     private static final Map<Direction, VoxelShape> SHAPES = ShapesHelper.rotate(Block.box(0.0, 0.0, 0.0, 16.0, 3.0, 16.0));
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
@@ -42,6 +43,11 @@ public class FlatLampBlock extends Block implements SimpleWaterloggedBlock {
     public FlatLampBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false).setValue(FACING, Direction.UP).setValue(LIT, false).setValue(POWERED, false));
+    }
+
+    @Override
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 
     @Override

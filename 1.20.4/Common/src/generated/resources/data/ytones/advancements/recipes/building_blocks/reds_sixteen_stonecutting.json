@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_reds": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "ytones:reds"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ytones:reds_sixteen_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_reds"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ytones:reds_sixteen_stonecutting"
+    ]
+  }
+}

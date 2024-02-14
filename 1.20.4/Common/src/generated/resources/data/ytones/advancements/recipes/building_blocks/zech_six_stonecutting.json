@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ytones:zech_six_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_zech": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "ytones:zech"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_zech"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ytones:zech_six_stonecutting"
+    ]
+  }
+}

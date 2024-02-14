@@ -1,8 +1,17 @@
 package fuzs.ytones.world.level.block;
 
-import net.minecraft.world.level.block.AbstractGlassBlock;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.world.level.block.TransparentBlock;
 
-public class ToneGlassBlock extends AbstractGlassBlock implements ToneProvider {
+public class ToneGlassBlock extends TransparentBlock implements ToneProvider {
+    public static final MapCodec<ToneGlassBlock> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
+        return instance.group(Tone.CODEC.fieldOf("tone").forGetter(ToneProvider::tone),
+                ToneType.CODEC.fieldOf("tone_type").forGetter(ToneProvider::type),
+                propertiesCodec()
+        ).apply(instance, ToneGlassBlock::new);
+    });
+
     private final Tone tone;
     private final ToneType type;
 
@@ -10,6 +19,11 @@ public class ToneGlassBlock extends AbstractGlassBlock implements ToneProvider {
         super(properties);
         this.tone = tone;
         this.type = type;
+    }
+
+    @Override
+    protected MapCodec<? extends TransparentBlock> codec() {
+        return CODEC;
     }
 
     @Override

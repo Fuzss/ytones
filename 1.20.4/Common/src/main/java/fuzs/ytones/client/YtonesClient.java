@@ -1,9 +1,8 @@
 package fuzs.ytones.client;
 
-import fuzs.puzzlesapi.api.client.slotcycling.v1.SlotCyclingProvider;
+import fuzs.hotbarslotcycling.api.v1.client.SlotCyclingProvider;
 import fuzs.puzzleslib.api.client.core.v1.ClientModConstructor;
 import fuzs.puzzleslib.api.client.core.v1.context.RenderTypesContext;
-import fuzs.ytones.client.handler.ToneCyclingProvider;
 import fuzs.ytones.world.level.block.Tone;
 import fuzs.ytones.world.level.block.ToneType;
 import net.minecraft.client.renderer.RenderType;

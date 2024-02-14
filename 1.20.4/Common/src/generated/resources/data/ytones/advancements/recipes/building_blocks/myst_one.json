@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ytones:myst_one"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_ytone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "ytones:ytone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ytone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ytones:myst_one"
+    ]
+  }
+}

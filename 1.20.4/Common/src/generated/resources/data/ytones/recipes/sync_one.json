@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "ytones:ytone"
+    },
+    "@": [
+      {
+        "tag": "c:green_dyes"
+      },
+      {
+        "tag": "forge:dyes/green"
+      }
+    ]
+  },
+  "pattern": [
+    "###",
+    "#@#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "item": "ytones:sync_one"
+  }
+}

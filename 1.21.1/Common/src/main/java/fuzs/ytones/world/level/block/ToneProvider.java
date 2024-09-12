@@ -10,11 +10,9 @@ public interface ToneProvider {
 
     ToneType type();
 
-    static ItemStack cycle(ItemStack stack, int value) {
-        ToneProvider provider = (ToneProvider) ((BlockItem) stack.getItem()).getBlock();
+    static ItemStack cycle(ItemStack itemStack, int value) {
+        ToneProvider provider = (ToneProvider) ((BlockItem) itemStack.getItem()).getBlock();
         Block block = provider.tone().block(provider.type().cycle(value));
-        ItemStack itemStack = new ItemStack(block, stack.getCount());
-        itemStack.setTag(stack.getTag());
-        return itemStack;
+        return itemStack.transmuteCopy(block);
     }
 }

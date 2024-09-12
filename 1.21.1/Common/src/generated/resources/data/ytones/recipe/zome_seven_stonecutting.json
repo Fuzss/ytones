@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "ytones:zome"
+  },
+  "result": {
+    "count": 1,
+    "id": "ytones:zome_seven"
+  }
+}

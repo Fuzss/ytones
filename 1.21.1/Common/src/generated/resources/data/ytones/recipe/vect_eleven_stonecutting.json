@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "ytones:vect"
+  },
+  "result": {
+    "count": 1,
+    "id": "ytones:vect_eleven"
+  }
+}

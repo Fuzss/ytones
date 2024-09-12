@@ -7,7 +7,22 @@ import java.util.Locale;
 import java.util.function.IntFunction;
 
 public enum ToneType implements StringRepresentable {
-    ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN, SIXTEEN;
+    ONE,
+    TWO,
+    THREE,
+    FOUR,
+    FIVE,
+    SIX,
+    SEVEN,
+    EIGHT,
+    NINE,
+    TEN,
+    ELEVEN,
+    TWELVE,
+    THIRTEEN,
+    FOURTEEN,
+    FIFTEEN,
+    SIXTEEN;
 
     public static final StringRepresentable.EnumCodec<ToneType> CODEC = StringRepresentable.fromEnum(ToneType::values);
 

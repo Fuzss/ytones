@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "ytones:glaxx"
+  },
+  "result": {
+    "count": 1,
+    "id": "ytones:glaxx_thirteen"
+  }
+}

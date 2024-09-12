@@ -6,7 +6,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -42,7 +41,11 @@ public class FlatLampBlock extends Block implements SimpleWaterloggedBlock {
 
     public FlatLampBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false).setValue(FACING, Direction.UP).setValue(LIT, false).setValue(POWERED, false));
+        this.registerDefaultState(this.defaultBlockState()
+                .setValue(WATERLOGGED, false)
+                .setValue(FACING, Direction.UP)
+                .setValue(LIT, false)
+                .setValue(POWERED, false));
     }
 
     @Override
@@ -69,26 +72,29 @@ public class FlatLampBlock extends Block implements SimpleWaterloggedBlock {
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
-        boolean bl = level.hasNeighborSignal(pos);
-        BlockState state = this.defaultBlockState().setValue(WATERLOGGED, level.getFluidState(pos).getType() == Fluids.WATER).setValue(LIT, bl).setValue(POWERED, bl);
+        boolean hasNeighborSignal = level.hasNeighborSignal(pos);
+        BlockState blockState = this.defaultBlockState().setValue(WATERLOGGED,
+                level.getFluidState(pos).getType() == Fluids.WATER
+        ).setValue(LIT, hasNeighborSignal).setValue(POWERED, hasNeighborSignal);
         for (Direction direction : context.getNearestLookingDirections()) {
             Direction opposite = direction.getOpposite();
-            state = state.setValue(FACING, opposite);
-            if (state.canSurvive(level, pos)) {
-                return state;
+            blockState = blockState.setValue(FACING, opposite);
+            if (blockState.canSurvive(level, pos)) {
+                return blockState;
             }
         }
+
         return null;
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        boolean bl = state.getValue(LIT);
-        state = state.setValue(LIT, !bl);
-        level.setBlock(pos, state, 10);
-        float f = !bl ? 0.8F : 0.6F;
-        level.playSound(null, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, f);
-        level.gameEvent(player, bl ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);
+    protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        boolean isLit = blockState.getValue(LIT);
+        blockState = blockState.setValue(LIT, !isLit);
+        level.setBlock(pos, blockState, 10);
+        float soundPitch = !isLit ? 0.8F : 0.6F;
+        level.playSound(null, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, soundPitch);
+        level.gameEvent(player, isLit ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
 

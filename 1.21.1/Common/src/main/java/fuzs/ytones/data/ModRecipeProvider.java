@@ -49,7 +49,7 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
                     .unlockedBy(getHasName(ModRegistry.YTONE_BLOCK.value()), has(ModRegistry.YTONE_BLOCK.value()))
                     .save(recipeOutput);
         }
-        Tone.forEach((tone, toneType) -> {
+        Tone.forEach((Tone tone, ToneType toneType) -> {
             stonecutterResultFromBase(recipeOutput, tone, toneType);
         });
     }

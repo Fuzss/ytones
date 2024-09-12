@@ -11,15 +11,16 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public class ModRegistry {
-    static final RegistryManager REGISTRY = RegistryManager.from(Ytones.MOD_ID);
-    public static final Holder.Reference<Block> YTONE_BLOCK = REGISTRY.registerBlock("ytone", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final Holder.Reference<Block> FLAT_LAMP_BLOCK = REGISTRY.registerBlock("flat_lamp", () -> new FlatLampBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP).isValidSpawn((state, blockGetter, pos, entity) -> false)));
-    public static final Holder.Reference<Item> STONE_TILE_ITEM = REGISTRY.registerBlockItem(YTONE_BLOCK);
-    public static final Holder.Reference<Item> FLAT_LAMP_ITEM = REGISTRY.registerBlockItem(FLAT_LAMP_BLOCK);
+    static final RegistryManager REGISTRIES = RegistryManager.from(Ytones.MOD_ID);
+    public static final Holder.Reference<Block> YTONE_BLOCK = REGISTRIES.registerBlock("ytone", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final Holder.Reference<Block> FLAT_LAMP_BLOCK = REGISTRIES.registerBlock("flat_lamp", () -> new FlatLampBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_LAMP)
+            .isValidSpawn((state, blockGetter, pos, entity) -> false)));
+    public static final Holder.Reference<Item> STONE_TILE_ITEM = REGISTRIES.registerBlockItem(YTONE_BLOCK);
+    public static final Holder.Reference<Item> FLAT_LAMP_ITEM = REGISTRIES.registerBlockItem(FLAT_LAMP_BLOCK);
 
     public static void touch() {
         Tone.forEach((tone, toneType) -> {
-            REGISTRY.registerBlockItem(REGISTRY.registerBlock(tone.id(toneType), () -> tone.factory.apply(toneType)));
+            REGISTRIES.registerBlockItem(REGISTRIES.registerBlock(tone.id(toneType), () -> tone.factory.apply(toneType)));
         });
     }
 }

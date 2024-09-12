@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "ytones:jelt"
+  },
+  "result": {
+    "count": 1,
+    "id": "ytones:jelt_nine"
+  }
+}

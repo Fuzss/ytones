@@ -3,8 +3,9 @@ package fuzs.ytones;
 import com.google.common.collect.Lists;
 import fuzs.puzzleslib.api.core.v1.ModConstructor;
 import fuzs.puzzleslib.api.core.v1.context.CreativeModeTabContext;
+import fuzs.puzzleslib.api.core.v1.utility.ResourceLocationHelper;
 import fuzs.puzzleslib.api.item.v2.CreativeModeTabConfigurator;
-import fuzs.puzzleslib.api.network.v3.NetworkHandlerV3;
+import fuzs.puzzleslib.api.network.v3.NetworkHandler;
 import fuzs.ytones.init.ModRegistry;
 import fuzs.ytones.network.client.ServerboundCycleToneMessage;
 import fuzs.ytones.world.level.block.Tone;
@@ -21,7 +22,8 @@ public class Ytones implements ModConstructor {
     public static final String MOD_NAME = "Ytones";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
 
-    public static final NetworkHandlerV3 NETWORK = NetworkHandlerV3.builder(MOD_ID).registerServerbound(ServerboundCycleToneMessage.class);
+    public static final NetworkHandler NETWORK = NetworkHandler.builder(MOD_ID)
+            .registerServerbound(ServerboundCycleToneMessage.class);
 
     @Override
     public void onConstructMod() {
@@ -47,6 +49,6 @@ public class Ytones implements ModConstructor {
     }
 
     public static ResourceLocation id(String path) {
-        return new ResourceLocation(MOD_ID, path);
+        return ResourceLocationHelper.fromNamespaceAndPath(MOD_ID, path);
     }
 }

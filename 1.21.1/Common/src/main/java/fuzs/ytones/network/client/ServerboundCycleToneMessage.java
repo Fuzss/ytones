@@ -12,6 +12,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 
 public record ServerboundCycleToneMessage(int carriedIndex, InteractionHand interactionHand, int value) implements ServerboundMessage<ServerboundCycleToneMessage> {
+
     @Override
     public ServerMessageListener<ServerboundCycleToneMessage> getHandler() {
         return new ServerMessageListener<>() {

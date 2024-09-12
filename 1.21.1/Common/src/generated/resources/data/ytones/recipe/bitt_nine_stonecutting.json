@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "ytones:bitt"
+  },
+  "result": {
+    "count": 1,
+    "id": "ytones:bitt_nine"
+  }
+}

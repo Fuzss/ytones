@@ -1,10 +1,9 @@
 package fuzs.ytones.world.level.block;
 
 import com.google.common.collect.Maps;
+import fuzs.puzzleslib.api.init.v3.tags.TypedTagFactory;
 import fuzs.ytones.Ytones;
-import fuzs.ytones.tags.TagFactory;
-import fuzs.ytones.world.item.crafting.CommonIngredients;
-import net.minecraft.core.Direction;
+import fuzs.ytones.tags.DyeItemTags;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -25,9 +24,42 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public enum Tone implements StringRepresentable {
-    AGON(Items.WHITE_CONCRETE, Items.ORANGE_CONCRETE, Items.MAGENTA_CONCRETE, Items.LIGHT_BLUE_CONCRETE, Items.YELLOW_CONCRETE, Items.LIME_CONCRETE, Items.PINK_CONCRETE, Items.GRAY_CONCRETE, Items.LIGHT_GRAY_CONCRETE, Items.CYAN_CONCRETE, Items.PURPLE_CONCRETE, Items.BLUE_CONCRETE, Items.BROWN_CONCRETE, Items.GREEN_CONCRETE, Items.RED_CONCRETE, Items.BLACK_CONCRETE), AZUR(CommonIngredients.BLUE_DYES), BITT(Items.COAL), CRAY(ItemTags.TERRACOTTA), FORT(Blocks.TUFF), GLAXX(Ingredient.of(Items.GLASS), (tone, type) -> new ToneGlassBlock(tone, type, BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS))), ISZM(Blocks.DEEPSLATE), JELT(CommonIngredients.ORANGE_DYES), KORP(Blocks.GRAVEL), KRYP(Blocks.DIRT), LAIR(Blocks.GRANITE), LAVE(CommonIngredients.LIGHT_BLUE_DYES), MINT(CommonIngredients.LIME_DYES), MYST(Blocks.SNOW), REDS(CommonIngredients.RED_DYES), REED(Blocks.SUGAR_CANE), ROEN(Blocks.SAND), SOLS(CommonIngredients.YELLOW_DYES), SYNC(CommonIngredients.GREEN_DYES), TANK(CommonIngredients.GRAY_DYES), VECT(CommonIngredients.BLACK_DYES), VENA(Blocks.ANDESITE), ZANE(Blocks.CALCITE), ZECH(Items.CHARCOAL), ZEST(Blocks.MUD), ZETA(Blocks.BASALT), ZION(Blocks.SMOOTH_BASALT), ZKUL(Items.BONE), ZOEA(Blocks.DIORITE), ZOME(Blocks.COBBLESTONE), ZONE(Blocks.COBBLED_DEEPSLATE), ZORG(Blocks.CLAY), ZTYL(CommonIngredients.LIGHT_GRAY_DYES), ZYTH(Blocks.BLACKSTONE);
+    AGON(Items.WHITE_CONCRETE, Items.ORANGE_CONCRETE, Items.MAGENTA_CONCRETE, Items.LIGHT_BLUE_CONCRETE, Items.YELLOW_CONCRETE, Items.LIME_CONCRETE, Items.PINK_CONCRETE, Items.GRAY_CONCRETE, Items.LIGHT_GRAY_CONCRETE, Items.CYAN_CONCRETE, Items.PURPLE_CONCRETE, Items.BLUE_CONCRETE, Items.BROWN_CONCRETE, Items.GREEN_CONCRETE, Items.RED_CONCRETE, Items.BLACK_CONCRETE),
+    AZUR(DyeItemTags.BLUE_DYES),
+    BITT(Items.COAL),
+    CRAY(ItemTags.TERRACOTTA),
+    FORT(Blocks.TUFF),
+    GLAXX(Ingredient.of(Items.GLASS), (tone, type) -> new ToneGlassBlock(tone, type, BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS))),
+    ISZM(Blocks.DEEPSLATE),
+    JELT(DyeItemTags.ORANGE_DYES),
+    KORP(Blocks.GRAVEL),
+    KRYP(Blocks.DIRT),
+    LAIR(Blocks.GRANITE),
+    LAVE(DyeItemTags.LIGHT_BLUE_DYES),
+    MINT(DyeItemTags.LIME_DYES),
+    MYST(Blocks.SNOW),
+    REDS(DyeItemTags.RED_DYES),
+    REED(Blocks.SUGAR_CANE),
+    ROEN(Blocks.SAND),
+    SOLS(DyeItemTags.YELLOW_DYES),
+    SYNC(DyeItemTags.GREEN_DYES),
+    TANK(DyeItemTags.GRAY_DYES),
+    VECT(DyeItemTags.BLACK_DYES),
+    VENA(Blocks.ANDESITE),
+    ZANE(Blocks.CALCITE),
+    ZECH(Items.CHARCOAL),
+    ZEST(Blocks.MUD),
+    ZETA(Blocks.BASALT),
+    ZION(Blocks.SMOOTH_BASALT),
+    ZKUL(Items.BONE),
+    ZOEA(Blocks.DIORITE),
+    ZOME(Blocks.COBBLESTONE),
+    ZONE(Blocks.COBBLED_DEEPSLATE),
+    ZORG(Blocks.CLAY),
+    ZTYL(DyeItemTags.LIGHT_GRAY_DYES),
+    ZYTH(Blocks.BLACKSTONE);
 
-    public static final StringRepresentable.EnumCodec<Tone> CODEC = StringRepresentable.fromEnum(Tone::values);
+    public static final StringRepresentable.StringRepresentableCodec<Tone> CODEC = StringRepresentable.fromEnum(Tone::values);
 
     public final Ingredient ingredient;
     public final Function<ToneType, Block> factory;
@@ -42,7 +74,9 @@ public enum Tone implements StringRepresentable {
     }
 
     Tone(Ingredient ingredient) {
-        this(ingredient, (tone, type) -> new ToneBlock(tone, type, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+        this(ingredient, (Tone tone, ToneType type) -> {
+            return new ToneBlock(tone, type, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE));
+        });
     }
 
     Tone(Ingredient ingredient, BiFunction<Tone, ToneType, Block> factory) {
@@ -84,6 +118,6 @@ public enum Tone implements StringRepresentable {
     }
 
     public TagKey<Item> tagKey() {
-        return TagFactory.ITEM.make(Ytones.MOD_ID, this.id());
+        return TypedTagFactory.ITEM.make(Ytones.MOD_ID, this.id());
     }
 }

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "ytones:iszm"
+  },
+  "result": {
+    "count": 1,
+    "id": "ytones:iszm_eleven"
+  }
+}

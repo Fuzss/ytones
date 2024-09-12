@@ -6,10 +6,9 @@ import net.minecraft.world.level.block.TransparentBlock;
 
 public class ToneGlassBlock extends TransparentBlock implements ToneProvider {
     public static final MapCodec<ToneGlassBlock> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
-        return instance.group(Tone.CODEC.fieldOf("tone").forGetter(ToneProvider::tone),
-                ToneType.CODEC.fieldOf("tone_type").forGetter(ToneProvider::type),
-                propertiesCodec()
-        ).apply(instance, ToneGlassBlock::new);
+        return instance.group(Tone.CODEC.fieldOf("tone")
+                .forGetter(ToneProvider::tone), ToneType.CODEC.fieldOf("tone_type")
+                .forGetter(ToneProvider::type), propertiesCodec()).apply(instance, ToneGlassBlock::new);
     });
 
     private final Tone tone;

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "ytones:ytone"
+    },
+    "@": [
+      {
+        "tag": "c:light_gray_dyes"
+      },
+      {
+        "tag": "forge:dyes/light_gray"
+      }
+    ]
+  },
+  "pattern": [
+    "###",
+    "#@#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "item": "ytones:ztyl_one"
+  }
+}

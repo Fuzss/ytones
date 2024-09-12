@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "tag": "ytones:fort"
+  },
+  "result": "ytones:fort_one"
+}

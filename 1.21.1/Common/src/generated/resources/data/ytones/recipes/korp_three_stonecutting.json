@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "tag": "ytones:korp"
+  },
+  "result": "ytones:korp_three"
+}

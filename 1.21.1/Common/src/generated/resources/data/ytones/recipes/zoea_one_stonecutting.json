@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "tag": "ytones:zoea"
+  },
+  "result": "ytones:zoea_one"
+}

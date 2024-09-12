@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_agon": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "ytones:agon"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ytones:agon_twelve_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_agon"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ytones:agon_twelve_stonecutting"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ytones:zone_nine_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_zone": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "ytones:zone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_zone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ytones:zone_nine_stonecutting"
+    ]
+  }
+}

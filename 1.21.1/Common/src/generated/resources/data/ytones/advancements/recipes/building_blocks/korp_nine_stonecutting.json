@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_korp": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "ytones:korp"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ytones:korp_nine_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_korp"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ytones:korp_nine_stonecutting"
+    ]
+  }
+}

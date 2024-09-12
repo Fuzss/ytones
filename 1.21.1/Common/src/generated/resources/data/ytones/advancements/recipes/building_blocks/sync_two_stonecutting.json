@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sync": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "ytones:sync"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ytones:sync_two_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sync"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ytones:sync_two_stonecutting"
+    ]
+  }
+}

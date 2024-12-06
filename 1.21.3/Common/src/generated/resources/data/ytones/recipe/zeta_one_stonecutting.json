@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "ytones:zeta"
-  },
+  "ingredient": "#ytones:zeta",
   "result": {
     "count": 1,
     "id": "ytones:zeta_one"

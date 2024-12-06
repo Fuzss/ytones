@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "ytones:zane"
-  },
+  "ingredient": "#ytones:zane",
   "result": {
     "count": 1,
     "id": "ytones:zane_two"

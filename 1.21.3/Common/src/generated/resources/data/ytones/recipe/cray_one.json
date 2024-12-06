@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "ytones:ytone"
-    },
-    "@": {
-      "tag": "minecraft:terracotta"
-    }
+    "#": "ytones:ytone",
+    "@": "#minecraft:terracotta"
   },
   "pattern": [
     "###",

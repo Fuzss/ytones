@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "ytones:agon"
-  },
+  "ingredient": "#ytones:agon",
   "result": {
     "count": 1,
     "id": "ytones:agon_two"

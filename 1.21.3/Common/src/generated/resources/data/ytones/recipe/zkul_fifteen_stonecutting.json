@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "ytones:zkul"
-  },
+  "ingredient": "#ytones:zkul",
   "result": {
     "count": 1,
     "id": "ytones:zkul_fifteen"

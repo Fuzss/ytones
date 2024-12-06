@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "ytones:reds"
-  },
+  "ingredient": "#ytones:reds",
   "result": {
     "count": 1,
     "id": "ytones:reds_twelve"

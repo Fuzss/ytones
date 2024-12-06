@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "ytones:sync"
-  },
+  "ingredient": "#ytones:sync",
   "result": {
     "count": 1,
     "id": "ytones:sync_five"

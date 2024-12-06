@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "ytones:glaxx"
-  },
+  "ingredient": "#ytones:glaxx",
   "result": {
     "count": 1,
     "id": "ytones:glaxx_six"

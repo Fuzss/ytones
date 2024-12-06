@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "minecraft:stone"
-    },
-    "@": {
-      "item": "minecraft:smooth_stone_slab"
-    }
+    "#": "minecraft:stone",
+    "@": "minecraft:smooth_stone_slab"
   },
   "pattern": [
     "###",

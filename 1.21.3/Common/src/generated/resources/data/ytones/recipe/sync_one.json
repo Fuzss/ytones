@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "ytones:ytone"
-    },
-    "@": {
-      "tag": "c:dyes/green"
-    }
+    "#": "ytones:ytone",
+    "@": "#c:dyes/green"
   },
   "pattern": [
     "###",

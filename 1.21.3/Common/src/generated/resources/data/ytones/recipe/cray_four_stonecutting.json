@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "ytones:cray"
-  },
+  "ingredient": "#ytones:cray",
   "result": {
     "count": 1,
     "id": "ytones:cray_four"

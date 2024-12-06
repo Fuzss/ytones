@@ -2,20 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "key": {
-    "#": {
-      "item": "minecraft:smooth_stone_slab"
-    },
+    "#": "minecraft:smooth_stone_slab",
     "@": [
-      {
-        "item": "minecraft:glowstone"
-      },
-      {
-        "item": "minecraft:glow_ink_sac"
-      }
+      "minecraft:glowstone",
+      "minecraft:glow_ink_sac"
     ],
-    "X": {
-      "item": "minecraft:iron_ingot"
-    }
+    "X": "minecraft:iron_ingot"
   },
   "pattern": [
     "X@X",

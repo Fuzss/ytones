@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": {
-      "item": "ytones:ytone"
-    },
-    "@": {
-      "item": "minecraft:tuff"
-    }
+    "#": "ytones:ytone",
+    "@": "minecraft:tuff"
   },
   "pattern": [
     "###",

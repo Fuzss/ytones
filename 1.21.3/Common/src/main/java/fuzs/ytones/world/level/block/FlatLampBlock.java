@@ -1,17 +1,20 @@
 package fuzs.ytones.world.level.block;
 
 import com.mojang.serialization.MapCodec;
-import fuzs.puzzleslib.api.shape.v1.ShapesHelper;
+import fuzs.puzzleslib.api.util.v1.InteractionResultHelper;
+import fuzs.puzzleslib.api.util.v1.ShapesHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
@@ -20,10 +23,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -33,11 +37,16 @@ import java.util.Map;
 
 public class FlatLampBlock extends Block implements SimpleWaterloggedBlock {
     public static final MapCodec<FlatLampBlock> CODEC = simpleCodec(FlatLampBlock::new);
-    private static final Map<Direction, VoxelShape> SHAPES = ShapesHelper.rotate(Block.box(0.0, 0.0, 0.0, 16.0, 3.0, 16.0));
+    private static final Map<Direction, VoxelShape> SHAPES = ShapesHelper.rotate(Block.box(0.0,
+            0.0,
+            0.0,
+            16.0,
+            3.0,
+            16.0));
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
-    public static final DirectionProperty FACING = BlockStateProperties.FACING;
+    public static final EnumProperty<Direction> FACING = BlockStateProperties.FACING;
 
     public FlatLampBlock(Properties properties) {
         super(properties);
@@ -59,12 +68,19 @@ public class FlatLampBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos currentPos, BlockPos neighborPos) {
-        if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+    protected BlockState updateShape(BlockState blockState, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess, BlockPos blockPos, Direction direction, BlockPos neighborBlockPos, BlockState neighborBlockState, RandomSource randomSource) {
+        if (blockState.getValue(WATERLOGGED)) {
+            scheduledTickAccess.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelReader));
         }
 
-        return state;
+        return super.updateShape(blockState,
+                levelReader,
+                scheduledTickAccess,
+                blockPos,
+                direction,
+                neighborBlockPos,
+                neighborBlockState,
+                randomSource);
     }
 
     @Override
@@ -73,9 +89,10 @@ public class FlatLampBlock extends Block implements SimpleWaterloggedBlock {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
         boolean hasNeighborSignal = level.hasNeighborSignal(pos);
-        BlockState blockState = this.defaultBlockState().setValue(WATERLOGGED,
-                level.getFluidState(pos).getType() == Fluids.WATER
-        ).setValue(LIT, hasNeighborSignal).setValue(POWERED, hasNeighborSignal);
+        BlockState blockState = this.defaultBlockState()
+                .setValue(WATERLOGGED, level.getFluidState(pos).getType() == Fluids.WATER)
+                .setValue(LIT, hasNeighborSignal)
+                .setValue(POWERED, hasNeighborSignal);
         for (Direction direction : context.getNearestLookingDirections()) {
             Direction opposite = direction.getOpposite();
             blockState = blockState.setValue(FACING, opposite);
@@ -95,17 +112,21 @@ public class FlatLampBlock extends Block implements SimpleWaterloggedBlock {
         float soundPitch = !isLit ? 0.8F : 0.6F;
         level.playSound(null, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, soundPitch);
         level.gameEvent(player, isLit ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResultHelper.sidedSuccess(level.isClientSide);
     }
 
     @Override
-    public void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
+    protected void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, @Nullable Orientation orientation, boolean movedByPiston) {
         if (!level.isClientSide) {
-            boolean bl = level.hasNeighborSignal(pos);
-            if (state.getValue(POWERED) != bl) {
-                level.setBlock(pos, state.setValue(POWERED, bl).setValue(LIT, bl), 2);
-                if (state.getValue(LIT) != bl) {
-                    level.gameEvent(null, bl ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);
+            boolean hasNeighborSignal = level.hasNeighborSignal(blockPos);
+            if (blockState.getValue(POWERED) != hasNeighborSignal) {
+                level.setBlock(blockPos,
+                        blockState.setValue(POWERED, hasNeighborSignal).setValue(LIT, hasNeighborSignal),
+                        2);
+                if (blockState.getValue(LIT) != hasNeighborSignal) {
+                    level.gameEvent(null,
+                            hasNeighborSignal ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE,
+                            blockPos);
                 }
             }
         }

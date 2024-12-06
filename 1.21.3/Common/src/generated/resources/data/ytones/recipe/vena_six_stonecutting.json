@@ -1,8 +1,6 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "ytones:vena"
-  },
+  "ingredient": "#ytones:vena",
   "result": {
     "count": 1,
     "id": "ytones:vena_six"

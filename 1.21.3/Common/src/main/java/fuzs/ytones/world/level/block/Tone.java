@@ -1,9 +1,9 @@
 package fuzs.ytones.world.level.block;
 
-import com.google.common.collect.Maps;
-import fuzs.puzzleslib.api.init.v3.tags.TypedTagFactory;
 import fuzs.ytones.Ytones;
+import fuzs.ytones.init.ModRegistry;
 import fuzs.ytones.tags.DyeItemTags;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -17,19 +17,44 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.EnumMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public enum Tone implements StringRepresentable {
-    AGON(Items.WHITE_CONCRETE, Items.ORANGE_CONCRETE, Items.MAGENTA_CONCRETE, Items.LIGHT_BLUE_CONCRETE, Items.YELLOW_CONCRETE, Items.LIME_CONCRETE, Items.PINK_CONCRETE, Items.GRAY_CONCRETE, Items.LIGHT_GRAY_CONCRETE, Items.CYAN_CONCRETE, Items.PURPLE_CONCRETE, Items.BLUE_CONCRETE, Items.BROWN_CONCRETE, Items.GREEN_CONCRETE, Items.RED_CONCRETE, Items.BLACK_CONCRETE),
+    AGON(Items.WHITE_CONCRETE,
+            Items.ORANGE_CONCRETE,
+            Items.MAGENTA_CONCRETE,
+            Items.LIGHT_BLUE_CONCRETE,
+            Items.YELLOW_CONCRETE,
+            Items.LIME_CONCRETE,
+            Items.PINK_CONCRETE,
+            Items.GRAY_CONCRETE,
+            Items.LIGHT_GRAY_CONCRETE,
+            Items.CYAN_CONCRETE,
+            Items.PURPLE_CONCRETE,
+            Items.BLUE_CONCRETE,
+            Items.BROWN_CONCRETE,
+            Items.GREEN_CONCRETE,
+            Items.RED_CONCRETE,
+            Items.BLACK_CONCRETE),
     AZUR(DyeItemTags.BLUE_DYES),
     BITT(Items.COAL),
     CRAY(ItemTags.TERRACOTTA),
     FORT(Blocks.TUFF),
-    GLAXX(Ingredient.of(Items.GLASS), (tone, type) -> new ToneGlassBlock(tone, type, BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS))),
+    GLAXX(Items.GLASS) {
+        @Override
+        public Block createBlock(ToneType type, BlockBehaviour.Properties properties) {
+            return new ToneGlassBlock(this, type, properties);
+        }
+
+        @Override
+        public BlockBehaviour.Properties createBlockProperties() {
+            return BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS);
+        }
+    },
     ISZM(Blocks.DEEPSLATE),
     JELT(DyeItemTags.ORANGE_DYES),
     KORP(Blocks.GRAVEL),
@@ -61,32 +86,36 @@ public enum Tone implements StringRepresentable {
 
     public static final StringRepresentable.StringRepresentableCodec<Tone> CODEC = StringRepresentable.fromEnum(Tone::values);
 
-    public final Ingredient ingredient;
-    public final Function<ToneType, Block> factory;
-    private final Map<ToneType, Block> blocks = Maps.newEnumMap(ToneType.class);
+    private final Function<HolderGetter<Item>, Ingredient> ingredientFactory;
+    private final Map<ToneType, Block> blocks = new EnumMap<>(ToneType.class);
 
     Tone(ItemLike... item) {
-        this(Ingredient.of(item));
+        this((HolderGetter<Item> items) -> Ingredient.of(item));
     }
 
     Tone(TagKey<Item> tagKey) {
-        this(Ingredient.of(tagKey));
+        this((HolderGetter<Item> items) -> Ingredient.of(items.getOrThrow(tagKey)));
     }
 
-    Tone(Ingredient ingredient) {
-        this(ingredient, (Tone tone, ToneType type) -> {
-            return new ToneBlock(tone, type, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE));
-        });
-    }
-
-    Tone(Ingredient ingredient, BiFunction<Tone, ToneType, Block> factory) {
-        this.ingredient = ingredient;
-        this.factory = type -> factory.apply(this, type);
+    Tone(Function<HolderGetter<Item>, Ingredient> ingredientFactory) {
+        this.ingredientFactory = ingredientFactory;
     }
 
     @Override
     public String getSerializedName() {
         return this.name().toLowerCase(Locale.ROOT);
+    }
+
+    public Ingredient getIngredient(HolderGetter<Item> items) {
+        return this.ingredientFactory.apply(items);
+    }
+
+    public Block createBlock(ToneType type, BlockBehaviour.Properties properties) {
+        return new ToneBlock(this, type, properties);
+    }
+
+    public BlockBehaviour.Properties createBlockProperties() {
+        return BlockBehaviour.Properties.ofFullCopy(Blocks.STONE);
     }
 
     public static void forEach(BiConsumer<Tone, ToneType> consumer) {
@@ -114,10 +143,11 @@ public enum Tone implements StringRepresentable {
     }
 
     public Block block(ToneType type) {
-        return this.blocks.computeIfAbsent(type, $ -> BuiltInRegistries.BLOCK.get(Ytones.id(this.id(type))));
+        return this.blocks.computeIfAbsent(type,
+                (ToneType $) -> BuiltInRegistries.BLOCK.getValue(Ytones.id(this.id(type))));
     }
 
     public TagKey<Item> tagKey() {
-        return TypedTagFactory.ITEM.make(Ytones.MOD_ID, this.id());
+        return ModRegistry.TAGS.registerItemTag(this.id());
     }
 }

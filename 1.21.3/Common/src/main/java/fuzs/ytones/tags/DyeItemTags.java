@@ -1,11 +1,11 @@
 package fuzs.ytones.tags;
 
-import fuzs.puzzleslib.api.init.v3.tags.BoundTagFactory;
+import fuzs.puzzleslib.api.init.v3.tags.TagFactory;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
 public final class DyeItemTags {
-    static final BoundTagFactory TAGS = BoundTagFactory.make("c");
+    static final TagFactory TAGS = TagFactory.make("c");
     public static final TagKey<Item> DYES = TAGS.registerItemTag("dyes");
     public static final TagKey<Item> WHITE_DYES = TAGS.registerItemTag("dyes/white");
     public static final TagKey<Item> ORANGE_DYES = TAGS.registerItemTag("dyes/orange");

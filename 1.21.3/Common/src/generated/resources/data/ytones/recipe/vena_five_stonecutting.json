@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "ytones:vena"
+  },
+  "result": {
+    "count": 1,
+    "id": "ytones:vena_five"
+  }
+}

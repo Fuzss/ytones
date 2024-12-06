@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "ytones:azur"
+  },
+  "result": {
+    "count": 1,
+    "id": "ytones:azur_twelve"
+  }
+}

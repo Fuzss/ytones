@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "ytones:korp"
+  },
+  "result": {
+    "count": 1,
+    "id": "ytones:korp_ten"
+  }
+}

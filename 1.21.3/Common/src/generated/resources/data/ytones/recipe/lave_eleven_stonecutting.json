@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "ytones:lave"
+  },
+  "result": {
+    "count": 1,
+    "id": "ytones:lave_eleven"
+  }
+}

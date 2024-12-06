@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "ytones:ytone"
+    },
+    "@": {
+      "item": "minecraft:granite"
+    }
+  },
+  "pattern": [
+    "###",
+    "#@#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "ytones:lair_one"
+  }
+}

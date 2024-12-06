@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "ytones:ytone"
+    },
+    "@": {
+      "tag": "c:dyes/orange"
+    }
+  },
+  "pattern": [
+    "###",
+    "#@#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "ytones:jelt_one"
+  }
+}

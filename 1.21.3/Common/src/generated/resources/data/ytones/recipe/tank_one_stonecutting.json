@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "ytones:tank"
+  },
+  "result": {
+    "count": 1,
+    "id": "ytones:tank_one"
+  }
+}

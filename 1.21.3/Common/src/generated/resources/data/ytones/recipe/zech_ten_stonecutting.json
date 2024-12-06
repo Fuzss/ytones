@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "ytones:zech"
+  },
+  "result": {
+    "count": 1,
+    "id": "ytones:zech_ten"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "ytones:reed"
+  },
+  "result": {
+    "count": 1,
+    "id": "ytones:reed_three"
+  }
+}

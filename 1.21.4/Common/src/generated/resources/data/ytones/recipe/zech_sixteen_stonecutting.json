@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "#ytones:zech",
+  "result": {
+    "count": 1,
+    "id": "ytones:zech_sixteen"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "#ytones:lair",
+  "result": {
+    "count": 1,
+    "id": "ytones:lair_six"
+  }
+}

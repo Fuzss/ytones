@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "#ytones:sols",
+  "result": {
+    "count": 1,
+    "id": "ytones:sols_sixteen"
+  }
+}

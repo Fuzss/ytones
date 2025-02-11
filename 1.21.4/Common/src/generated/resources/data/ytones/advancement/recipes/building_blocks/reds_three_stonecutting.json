@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_reds": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#ytones:reds"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ytones:reds_three_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_reds"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ytones:reds_three_stonecutting"
+    ]
+  }
+}

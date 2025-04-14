@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_azur": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#ytones:azur"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ytones:azur_eight_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_azur"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ytones:azur_eight_stonecutting"
+    ]
+  }
+}

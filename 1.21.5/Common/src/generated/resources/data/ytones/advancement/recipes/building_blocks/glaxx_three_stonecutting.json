@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_glaxx": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#ytones:glaxx"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ytones:glaxx_three_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_glaxx"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ytones:glaxx_three_stonecutting"
+    ]
+  }
+}

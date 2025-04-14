@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mint": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#ytones:mint"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ytones:mint_one_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mint"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ytones:mint_one_stonecutting"
+    ]
+  }
+}

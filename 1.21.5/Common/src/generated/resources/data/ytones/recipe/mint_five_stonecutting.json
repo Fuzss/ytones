@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "#ytones:mint",
+  "result": {
+    "count": 1,
+    "id": "ytones:mint_five"
+  }
+}

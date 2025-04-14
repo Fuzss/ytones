@@ -1,27 +1,39 @@
 package fuzs.ytones.network.client;
 
-import fuzs.puzzleslib.api.network.v3.ServerMessageListener;
-import fuzs.puzzleslib.api.network.v3.ServerboundMessage;
+import fuzs.puzzleslib.api.network.v4.codec.ExtraStreamCodecs;
+import fuzs.puzzleslib.api.network.v4.message.MessageListener;
+import fuzs.puzzleslib.api.network.v4.message.play.ServerboundPlayMessage;
 import fuzs.ytones.world.level.block.ToneProvider;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.game.ServerboundSetCarriedItemPacket;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 
-public record ServerboundCycleToneMessage(int carriedIndex, InteractionHand interactionHand, int value) implements ServerboundMessage<ServerboundCycleToneMessage> {
+public record ServerboundCycleToneMessage(int carriedIndex,
+                                          InteractionHand interactionHand,
+                                          int value) implements ServerboundPlayMessage {
+    public static final StreamCodec<ByteBuf, ServerboundCycleToneMessage> STREAM_CODEC = StreamCodec.composite(
+            ByteBufCodecs.SHORT.map(Short::intValue, Integer::shortValue),
+            ServerboundCycleToneMessage::carriedIndex,
+            ExtraStreamCodecs.fromEnum(InteractionHand.class),
+            ServerboundCycleToneMessage::interactionHand,
+            ByteBufCodecs.BYTE.map(Byte::intValue, Integer::byteValue),
+            ServerboundCycleToneMessage::value,
+            ServerboundCycleToneMessage::new);
 
     @Override
-    public ServerMessageListener<ServerboundCycleToneMessage> getHandler() {
-        return new ServerMessageListener<>() {
-
+    public MessageListener<Context> getListener() {
+        return new MessageListener<Context>() {
             @Override
-            public void handle(ServerboundCycleToneMessage message, MinecraftServer server, ServerGamePacketListenerImpl handler, ServerPlayer player, ServerLevel level) {
-                handler.handleSetCarriedItem(new ServerboundSetCarriedItemPacket(message.carriedIndex));
-                ItemStack itemInHand = player.getItemInHand(message.interactionHand);
-                player.setItemInHand(message.interactionHand, ToneProvider.cycle(itemInHand, message.value));
+            public void accept(Context context) {
+                context.packetListener()
+                        .handleSetCarriedItem(new ServerboundSetCarriedItemPacket(ServerboundCycleToneMessage.this.carriedIndex));
+                ItemStack itemInHand = context.player().getItemInHand(ServerboundCycleToneMessage.this.interactionHand);
+                context.player()
+                        .setItemInHand(ServerboundCycleToneMessage.this.interactionHand,
+                                ToneProvider.cycle(itemInHand, ServerboundCycleToneMessage.this.value));
             }
         };
     }

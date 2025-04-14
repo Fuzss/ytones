@@ -1,9 +1,9 @@
 package fuzs.ytones.client;
 
 import fuzs.hotbarslotcycling.api.v1.client.SlotCyclingProvider;
-import fuzs.puzzleslib.api.client.core.v1.ClientAbstractions;
 import fuzs.puzzleslib.api.client.core.v1.ClientModConstructor;
 import fuzs.puzzleslib.api.client.core.v1.context.RenderTypesContext;
+import fuzs.puzzleslib.api.config.v3.ConfigHolder;
 import fuzs.ytones.Ytones;
 import fuzs.ytones.world.level.block.Tone;
 import fuzs.ytones.world.level.block.ToneType;
@@ -14,7 +14,7 @@ public class YtonesClient implements ClientModConstructor {
 
     @Override
     public void onConstructMod() {
-        ClientAbstractions.INSTANCE.registerConfigScreenFactory(Ytones.MOD_ID, "hotbarslotcycling");
+        ConfigHolder.registerConfigurationScreen(Ytones.MOD_ID, "hotbarslotcycling");
     }
 
     @Override

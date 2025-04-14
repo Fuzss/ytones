@@ -10,8 +10,6 @@ import fuzs.ytones.world.level.block.ToneType;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
-import net.minecraft.client.data.models.blockstates.Variant;
-import net.minecraft.client.data.models.blockstates.VariantProperties;
 import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
@@ -52,11 +50,11 @@ public class ModModelProvider extends AbstractModelProvider {
                 "_off",
                 flatLamp(block, "_off"),
                 blockModelGenerators.modelOutput);
-        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block)
-                .with(blockModelGenerators.createColumnWithFacing())
-                .with(PropertyDispatch.property(BlockStateProperties.LIT)
-                        .select(Boolean.FALSE, Variant.variant().with(VariantProperties.MODEL, offModel))
-                        .select(Boolean.TRUE, Variant.variant().with(VariantProperties.MODEL, onModel))));
+        blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.dispatch(block)
+                .with(PropertyDispatch.initial(BlockStateProperties.LIT)
+                        .select(Boolean.FALSE, BlockModelGenerators.plainVariant(offModel))
+                        .select(Boolean.TRUE, BlockModelGenerators.plainVariant(onModel)))
+                .with(BlockModelGenerators.ROTATIONS_COLUMN_WITH_FACING));
         blockModelGenerators.registerSimpleItemModel(block, onModel);
     }
 }

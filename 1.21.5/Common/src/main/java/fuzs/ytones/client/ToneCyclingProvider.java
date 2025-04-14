@@ -1,7 +1,7 @@
 package fuzs.ytones.client;
 
 import fuzs.hotbarslotcycling.api.v1.client.ItemCyclingProvider;
-import fuzs.ytones.Ytones;
+import fuzs.puzzleslib.api.network.v4.MessageSender;
 import fuzs.ytones.network.client.ServerboundCycleToneMessage;
 import fuzs.ytones.world.level.block.ToneProvider;
 import net.minecraft.client.Minecraft;
@@ -49,8 +49,8 @@ public record ToneCyclingProvider(ItemStack itemInHand,
 
     private boolean cycleSlot(int value) {
         Minecraft minecraft = Minecraft.getInstance();
-        int selected = minecraft.player.getInventory().selected;
-        Ytones.NETWORK.sendMessage(new ServerboundCycleToneMessage(selected, this.interactionHand, value));
+        int selected = minecraft.player.getInventory().getSelectedSlot();
+        MessageSender.broadcast(new ServerboundCycleToneMessage(selected, this.interactionHand, value));
         return true;
     }
 }

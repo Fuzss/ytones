@@ -1,8 +1,8 @@
 package fuzs.ytones;
 
 import fuzs.puzzleslib.api.core.v1.ModConstructor;
+import fuzs.puzzleslib.api.core.v1.context.PayloadTypesContext;
 import fuzs.puzzleslib.api.core.v1.utility.ResourceLocationHelper;
-import fuzs.puzzleslib.api.network.v3.NetworkHandler;
 import fuzs.ytones.init.ModRegistry;
 import fuzs.ytones.network.client.ServerboundCycleToneMessage;
 import net.minecraft.resources.ResourceLocation;
@@ -14,12 +14,14 @@ public class Ytones implements ModConstructor {
     public static final String MOD_NAME = "Ytones";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
 
-    public static final NetworkHandler NETWORK = NetworkHandler.builder(MOD_ID)
-            .registerServerbound(ServerboundCycleToneMessage.class);
-
     @Override
     public void onConstructMod() {
         ModRegistry.bootstrap();
+    }
+
+    @Override
+    public void onRegisterPayloadTypes(PayloadTypesContext context) {
+        context.playToServer(ServerboundCycleToneMessage.class, ServerboundCycleToneMessage.STREAM_CODEC);
     }
 
     public static ResourceLocation id(String path) {

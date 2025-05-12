@@ -117,7 +117,11 @@ public enum Tone implements StringRepresentable {
         return this.blocks.computeIfAbsent(type, $ -> BuiltInRegistries.BLOCK.get(Ytones.id(this.id(type))));
     }
 
-    public TagKey<Item> tagKey() {
+    public TagKey<Block> getBlockTagKey() {
+        return TypedTagFactory.BLOCK.make(Ytones.MOD_ID, this.id());
+    }
+
+    public TagKey<Item> getItemTagKey() {
         return TypedTagFactory.ITEM.make(Ytones.MOD_ID, this.id());
     }
 }

@@ -33,7 +33,7 @@ public enum ToneType implements StringRepresentable {
         return this.name().toLowerCase(Locale.ROOT);
     }
 
-    public String text() {
+    public String getName() {
         return String.valueOf((char) (BASE_TEXT + this.ordinal()));
     }
 

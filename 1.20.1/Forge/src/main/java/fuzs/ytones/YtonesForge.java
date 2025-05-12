@@ -19,6 +19,7 @@ public class YtonesForge {
     @SubscribeEvent
     public static void onGatherData(final GatherDataEvent evt) {
         evt.getGenerator().addProvider(true, new ModBlockLootProvider(evt, Ytones.MOD_ID));
+        evt.getGenerator().addProvider(true, new ModBlockTagProvider(evt, Ytones.MOD_ID));
         evt.getGenerator().addProvider(true, new ModItemTagProvider(evt, Ytones.MOD_ID));
         evt.getGenerator().addProvider(true, new ModLanguageProvider(evt, Ytones.MOD_ID));
         evt.getGenerator().addProvider(true, new ModModelProvider(evt, Ytones.MOD_ID));

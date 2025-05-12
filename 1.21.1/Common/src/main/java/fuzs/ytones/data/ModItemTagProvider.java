@@ -16,7 +16,7 @@ public class ModItemTagProvider extends AbstractTagProvider<Item> {
     @Override
     public void addTags(HolderLookup.Provider provider) {
         Tone.forEach((tone, toneType) -> {
-            this.add(tone.tagKey()).add(tone.block(toneType).asItem());
+            this.add(tone.getItemTagKey()).add(tone.block(toneType).asItem());
         });
     }
 }

@@ -1,4 +1,4 @@
-// 1.21.5	2025-04-14T21:47:56.822733	Recipes
+// 1.21.5	2025-05-12T11:41:34.588253	Recipes
 282e54c8b64412e465ade97cf9cc542ddd9b74f2 data/ytones/advancement/recipes/building_blocks/agon_eight_stonecutting.json
 16fccd8a114a88939d8af08356382240a240d186 data/ytones/advancement/recipes/building_blocks/agon_eleven_stonecutting.json
 854b32ebf75a6c3fad8ccf0ffa00b0e18975cd39 data/ytones/advancement/recipes/building_blocks/agon_fifteen_stonecutting.json
@@ -586,7 +586,7 @@ c36887a033427f947ffb949e805dd617e009df8e data/ytones/recipe/agon_eleven_stonecut
 66284db386e19240b79005934fa28228b99f70f7 data/ytones/recipe/agon_four_stonecutting.json
 7b9c6843e7eb9df04901859c6556bbff16626b44 data/ytones/recipe/agon_fourteen_stonecutting.json
 a52d52d00049fa83197dbcd1a8365481a1da716e data/ytones/recipe/agon_nine_stonecutting.json
-b9b455e13ac1bfb045ec84f2c37f22e8c66c40e9 data/ytones/recipe/agon_one.json
+ff1a27642b613ff8638e4941dee1917a496e8dfa data/ytones/recipe/agon_one.json
 96dea01bd66fda70a7881b6f1c40cdb6bebe7200 data/ytones/recipe/agon_one_stonecutting.json
 53d3485eb5b91d1792cdccf85e91d7d4eb21f604 data/ytones/recipe/agon_seven_stonecutting.json
 0b00b0dfb4029a25e830a2e2a1af6ac69df4946c data/ytones/recipe/agon_six_stonecutting.json

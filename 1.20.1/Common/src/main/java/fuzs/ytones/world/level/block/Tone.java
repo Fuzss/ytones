@@ -74,7 +74,11 @@ public enum Tone {
         return this.blocks.computeIfAbsent(type, $ -> BuiltInRegistries.BLOCK.get(Ytones.id(this.id(type))));
     }
 
-    public TagKey<Item> tagKey() {
+    public TagKey<Block> getBlockTagKey() {
+        return TagFactory.BLOCK.make(Ytones.MOD_ID, this.id());
+    }
+
+    public TagKey<Item> getItemTagKey() {
         return TagFactory.ITEM.make(Ytones.MOD_ID, this.id());
     }
 }

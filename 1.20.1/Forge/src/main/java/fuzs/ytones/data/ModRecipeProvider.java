@@ -54,8 +54,8 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
         }
         Tone.forEach((tone, toneType) -> {
             Block result = tone.block(toneType);
-            SingleItemRecipeBuilder.stonecutting(Ingredient.of(tone.tagKey()), RecipeCategory.BUILDING_BLOCKS, result)
-                    .unlockedBy("has_" + tone.id(), has(tone.tagKey()))
+            SingleItemRecipeBuilder.stonecutting(Ingredient.of(tone.getItemTagKey()), RecipeCategory.BUILDING_BLOCKS, result)
+                    .unlockedBy("has_" + tone.id(), has(tone.getItemTagKey()))
                     .save(exporter, Ytones.id(tone.id(toneType) + "_stonecutting"));
         });
     }

@@ -20,7 +20,7 @@ public class ModLanguageProvider extends AbstractLanguageProvider {
         builder.add(ModRegistry.YTONE_BLOCK.value(), "Ytone");
         builder.add(ModRegistry.FLAT_LAMP_ITEM.value(), "Flat Lamp");
         Tone.forEach((Tone tone, ToneType toneType) -> {
-            builder.add(BuiltInRegistries.BLOCK.getValue(Ytones.id(tone.id(toneType))), tone.text(toneType));
+            builder.add(BuiltInRegistries.BLOCK.getValue(Ytones.id(tone.id(toneType))), tone.getName(toneType));
         });
     }
 }

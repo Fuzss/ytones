@@ -41,9 +41,9 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
                 .pattern("###")
                 .unlockedBy(getHasName(Blocks.SMOOTH_STONE_SLAB), this.has(Blocks.SMOOTH_STONE_SLAB))
                 .save(recipeOutput);
-        ToneType type = ToneType.values()[0];
+        ToneType toneTypeX = ToneType.values()[0];
         for (Tone tone : Tone.values()) {
-            ShapedRecipeBuilder.shaped(this.items(), RecipeCategory.BUILDING_BLOCKS, tone.block(type), 8)
+            ShapedRecipeBuilder.shaped(this.items(), RecipeCategory.BUILDING_BLOCKS, tone.block(toneTypeX), 8)
                     .define('#', ModRegistry.YTONE_BLOCK.value())
                     .define('@', tone.getIngredient(this.items()))
                     .pattern("###")
@@ -58,10 +58,10 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
     }
 
     public void stonecutterResultFromBase(RecipeOutput recipeOutput, Tone tone, ToneType toneType) {
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(this.items().getOrThrow(tone.tagKey())),
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(this.items().getOrThrow(tone.getItemTagKey())),
                         RecipeCategory.BUILDING_BLOCKS,
                         tone.block(toneType))
-                .unlockedBy("has_" + tone.id(), this.has(tone.tagKey()))
+                .unlockedBy("has_" + tone.id(), this.has(tone.getItemTagKey()))
                 .save(recipeOutput,
                         ResourceKey.create(Registries.RECIPE, Ytones.id(tone.id(toneType) + "_stonecutting")));
     }

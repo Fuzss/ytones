@@ -55,10 +55,10 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
     }
 
     public static void stonecutterResultFromBase(RecipeOutput recipeOutput, Tone tone, ToneType toneType) {
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(tone.tagKey()), RecipeCategory.BUILDING_BLOCKS,
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(tone.getItemTagKey()), RecipeCategory.BUILDING_BLOCKS,
                         tone.block(toneType)
                 )
-                .unlockedBy("has_" + tone.id(), has(tone.tagKey()))
+                .unlockedBy("has_" + tone.id(), has(tone.getItemTagKey()))
                 .save(recipeOutput, Ytones.id(tone.id(toneType) + "_stonecutting"));
     }
 }

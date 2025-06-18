@@ -7,7 +7,7 @@ import fuzs.puzzleslib.api.config.v3.ConfigHolder;
 import fuzs.ytones.Ytones;
 import fuzs.ytones.world.level.block.Tone;
 import fuzs.ytones.world.level.block.ToneType;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.world.level.block.Block;
 
 public class YtonesClient implements ClientModConstructor {
@@ -26,8 +26,8 @@ public class YtonesClient implements ClientModConstructor {
 
     @Override
     public void onRegisterBlockRenderTypes(RenderTypesContext<Block> context) {
-        for (ToneType type : ToneType.values()) {
-            context.registerRenderType(RenderType.cutout(), Tone.GLAXX.block(type));
+        for (ToneType toneType : ToneType.values()) {
+            context.registerChunkRenderType(Tone.GLAXX.block(toneType), ChunkSectionLayer.TRANSLUCENT);
         }
     }
 }

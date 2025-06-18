@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cray": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#ytones:cray"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ytones:cray_two_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cray"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ytones:cray_two_stonecutting"
+    ]
+  }
+}

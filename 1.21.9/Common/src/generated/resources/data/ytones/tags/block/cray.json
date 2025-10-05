@@ -1,20 +1,20 @@
 {
   "values": [
-    "ytones:cray_one",
-    "ytones:cray_two",
-    "ytones:cray_three",
-    "ytones:cray_four",
-    "ytones:cray_five",
-    "ytones:cray_six",
-    "ytones:cray_seven",
     "ytones:cray_eight",
-    "ytones:cray_nine",
-    "ytones:cray_ten",
     "ytones:cray_eleven",
-    "ytones:cray_twelve",
-    "ytones:cray_thirteen",
-    "ytones:cray_fourteen",
     "ytones:cray_fifteen",
-    "ytones:cray_sixteen"
+    "ytones:cray_five",
+    "ytones:cray_four",
+    "ytones:cray_fourteen",
+    "ytones:cray_nine",
+    "ytones:cray_one",
+    "ytones:cray_seven",
+    "ytones:cray_six",
+    "ytones:cray_sixteen",
+    "ytones:cray_ten",
+    "ytones:cray_thirteen",
+    "ytones:cray_three",
+    "ytones:cray_twelve",
+    "ytones:cray_two"
   ]
 }

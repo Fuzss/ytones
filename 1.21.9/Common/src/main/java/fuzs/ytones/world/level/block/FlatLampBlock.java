@@ -112,12 +112,12 @@ public class FlatLampBlock extends Block implements SimpleWaterloggedBlock {
         float soundPitch = !isLit ? 0.8F : 0.6F;
         level.playSound(null, pos, SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, soundPitch);
         level.gameEvent(player, isLit ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);
-        return InteractionResultHelper.sidedSuccess(level.isClientSide);
+        return InteractionResultHelper.sidedSuccess(level.isClientSide());
     }
 
     @Override
     protected void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, @Nullable Orientation orientation, boolean movedByPiston) {
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
             boolean hasNeighborSignal = level.hasNeighborSignal(blockPos);
             if (blockState.getValue(POWERED) != hasNeighborSignal) {
                 level.setBlock(blockPos,

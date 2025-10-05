@@ -1,6 +1,5 @@
 {
   "values": [
-    "ytones:ytone",
     "#ytones:agon",
     "#ytones:azur",
     "#ytones:bitt",
@@ -22,6 +21,7 @@
     "#ytones:tank",
     "#ytones:vect",
     "#ytones:vena",
+    "ytones:ytone",
     "#ytones:zane",
     "#ytones:zech",
     "#ytones:zest",

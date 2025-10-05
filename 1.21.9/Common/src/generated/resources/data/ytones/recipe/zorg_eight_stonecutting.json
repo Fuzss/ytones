@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "#ytones:zorg",
+  "result": {
+    "count": 1,
+    "id": "ytones:zorg_eight"
+  }
+}

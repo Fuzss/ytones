@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "#ytones:kryp",
+  "result": {
+    "count": 1,
+    "id": "ytones:kryp_two"
+  }
+}

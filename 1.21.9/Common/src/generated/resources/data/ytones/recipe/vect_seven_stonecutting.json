@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "#ytones:vect",
+  "result": {
+    "count": 1,
+    "id": "ytones:vect_seven"
+  }
+}
